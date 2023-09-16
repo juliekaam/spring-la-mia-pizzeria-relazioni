@@ -25,7 +25,7 @@ public class indexController {
         @GetMapping
         public String index(Model model) {
             List<Pizza> pizzaList = pizzaRepository.findAll();// questa è la lista di libri presa da database
-            model.addAttribute("pizze"); // passo la lista di libri al model
+            model.addAttribute("pizza",pizzaList); // passo la lista di libri al model
             return "pizze/listpizze";
         }
 

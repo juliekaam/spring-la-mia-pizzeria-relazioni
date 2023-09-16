@@ -1,6 +1,7 @@
 package org.learning.lamiapizzeriacrud1.model;
 
 import jakarta.persistence.*;
+import org.springframework.boot.context.properties.bind.Name;
 
 
 import java.math.BigDecimal;
@@ -9,7 +10,7 @@ import java.math.BigDecimal;
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+private Integer id;
     private String name;
     private String description;
     private BigDecimal price;
