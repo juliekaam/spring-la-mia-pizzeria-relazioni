@@ -15,6 +15,9 @@ private Integer id;
     private String description;
     private BigDecimal price;
 
+    private String img;
+
+
     public Integer getId() {
         return id;
     }
@@ -47,5 +50,11 @@ private Integer id;
         this.price = price;
     }
 
+    public String getImg() {
+        return img;
+    }
 
+    public void setImg(String img) {
+        this.img = img;
+    }
 }
