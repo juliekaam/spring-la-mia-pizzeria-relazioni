@@ -1,6 +1,9 @@
 package org.learning.lamiapizzeriacrud1.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.boot.context.properties.bind.Name;
 
 
@@ -11,8 +14,12 @@ public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer id;
+    @NotBlank(message = "la pizza deve avere un nome")
     private String name;
+    @NotBlank(message = "la pizza deve avere una descrizione")
     private String description;
+    @Min(5)
+
     private BigDecimal price;
 
     private String img;
