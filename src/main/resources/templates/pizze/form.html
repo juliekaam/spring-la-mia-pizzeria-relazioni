@@ -30,7 +30,7 @@
         <!-- campo per il title -->
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>
-            <input type="text" class="form-control" id="name" th:field="*{name}"
+            <input type="text" class="form-control" id="name" th:field="*{name}" required
                    th:errorClass="is-invalid">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}">
                 <ul>
@@ -40,7 +40,7 @@
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" id="description" th:field="*{description}"
+            <input type="text" class="form-control" id="description" th:field="*{description}" required
                    th:errorClass="is-invalid">
             <div class="invalid-feedback" th:if="${#fields.hasErrors('description')}">
                 <ul>
@@ -50,7 +50,7 @@
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Price</label>
-            <input type="number" class="form-control" id="price" th:field="*{price}"  th:errorClass="is-invalid">
+            <input type="number" class="form-control" id="price" th:field="*{price}" required th:errorClass="is-invalid">
         </div>
         <div class="invalid-feedback" th:if="${#fields.hasErrors('price')}">
             <ul>
@@ -58,10 +58,19 @@
             </ul>
         </div>
 
+        <div class="mb-3">
+            <label for="img" class="form-label">Image</label>
+            <input type="url" class="form-control" id="img" th:field="*{img}" required th:errorClass="is-invalid">
+        </div>
+        <div class="invalid-feedback" th:if="${#fields.hasErrors('img')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('img')}" th:text="${err}"></li>
+            </ul>
+        </div>
 
         <div class="mb-3">
             <button type="submit" class="btn btn-primary">Save</button>
-            <a class="btn btn-primary" th:href="@{/books}">Cancel</a>
+            <a class="btn btn-primary" th:href="@{/pizze}">Cancel</a>
         </div>
     </form>
 </div>

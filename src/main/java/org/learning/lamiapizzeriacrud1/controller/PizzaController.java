@@ -79,6 +79,45 @@ public class PizzaController {
         return "redirect:/pizze";
     }
 
+    /* metodi per update */
+    @GetMapping("/edit/{id}")
+    public String edit(@PathVariable Integer id, Model model) {
+        // cerco su database il libro con quell'id
+        Optional<Pizza> result = pizzaRepository.findById(id);
+        // verifico se il book è presente
+        if (result.isPresent()) {
+            // passo il Book al model come attributo
+            model.addAttribute("pizza", result.get());
+            // ritorno il template con il form di edit
+            return "pizze/edit";
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Pizza with id " + id + " not found");
+        }
+    }
+
+    // postmapping che riceve il submit
+    @PostMapping("/edit/{id}")
+    public String doEdit(@PathVariable Integer id, @Valid @ModelAttribute("pizza") Pizza formPizza,
+                         BindingResult bindingResult) {
+        // valido i dati
+        if (bindingResult.hasErrors()) {
+            // si sono verificati degli errori di validazione
+            return "/pizze/edit"; // nome del template per ricreare la view
+        }
+        // salvo il Book
+        pizzaRepository.save(formPizza);
+        return "redirect:/pizze";
+    }
+
+    // metodo per la delete
+    @PostMapping("/delete/{id}")
+    public String deleteById(@PathVariable Integer id) {
+        // cancello il book
+        pizzaRepository.deleteById(id);
+        // rimando alla pagina con la lista
+        return "redirect:/pizze";
+    }
+
 }
 
 
