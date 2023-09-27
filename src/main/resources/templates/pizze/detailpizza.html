@@ -52,14 +52,14 @@
         <td th:text="${specialOffer.enddate}"></td>
 
         <td class="d-flex align-items-center justify-content-end">
-          <a th:href="@{/specialOffers/edit/{specialOfferId}(specialOfferId=${specialOffer.id})}"
+          <a th:href="@{/specialoffers/edit/{specialOfferId}(specialOfferId=${specialOffer.id})}"
              class="btn btn-primary me-1">
             <i class="fa-solid fa-pen-to-square"></i>
           </a>
-          <form th:action="@{/specialOffers/delete/{specialOfferId}(specialOfferId = ${specialOffer.id})}"
+          <form th:action="@{/specialoffers/delete/{specialOfferId}(specialOfferId = ${specialOffer.id})}"
                 method="POST">
             <button type="submit" class="btn btn-primary">
-              <i class="fa-solid fa-trash-can"></i>
+              <i class="fa-solid fa-trash"></i>
             </button>
           </form>
         </td>

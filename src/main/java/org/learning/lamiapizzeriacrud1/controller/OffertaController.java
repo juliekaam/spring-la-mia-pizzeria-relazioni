@@ -69,46 +69,46 @@ public class OffertaController {
         return "redirect:/pizze/detailpizza/" +specialOfferForm.getPizza().getId();
     }
 
-  /*  // metodi per modificare un borrowing
-    @GetMapping("/edit/{borrowingId}")
-    public String edit(@PathVariable("borrowingId") Integer id, Model model) {
-        // recupero da database il Borrowing da modificare prendendolo per id
-        Optional<Borrowing> borrowingResult = borrowingRepository.findById(id);
-        if (borrowingResult.isPresent()) {
-            // passo come attributo del model il Borrowing da modificare
-            model.addAttribute("borrowing", borrowingResult.get());
+    // metodi per modificare un'offerta
+    @GetMapping("/edit/{specialofferId}")
+    public String edit(@PathVariable("specialofferId") Integer id, Model model) {
+        // recupero da database l'offerta da modificare prendendola per id
+        Optional<SpecialOffer> specialOfferResult = specialOfferRepository.findById(id);
+        if (specialOfferResult.isPresent()) {
+            // passo come attributo del model l'offerta da modificare
+            model.addAttribute("specialoffer", specialOfferResult.get());
             // ritorno il nome del template
-            return "/borrowings/edit";
+            return "/specialoffers/edit";
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
 
-    @PostMapping("/edit/{borrowingId}")
-    public String doEdit(@PathVariable("borrowingId") Integer borrowingId,
-                         @ModelAttribute("borrowing") Borrowing borrowingForm) {
-        // setto l'id del borrowing preso dal path variable
-        borrowingForm.setId(borrowingId);
-        // salvo il borrowing su database
-        borrowingRepository.save(borrowingForm);
-        // faccio la redirect alla show del book
-        return "redirect:/books/show/" + borrowingForm.getBook().getId();
+    @PostMapping("/edit/{specialofferId}")
+    public String doEdit(@PathVariable("specialofferId") Integer specialofferId,
+                         @ModelAttribute("specialoffer") SpecialOffer specialOfferForm) {
+        // setto l'id dell'offerta preso dal path variable
+        specialOfferForm.setId(specialofferId);
+        // salvol'offerta su database
+        specialOfferRepository.save(specialOfferForm);
+        // faccio la redirect alla show della pizza
+        return "redirect:/pizze/show/" + specialOfferForm.getPizza().getId();
     }
 
     // metodo per la delete
-    @PostMapping("/delete/{borrowingId}")
-    public String delete(@PathVariable("borrowingId") Integer id) {
-        // prima di cancellare il borrowing devo recuperare l'id del book
-        Optional<Borrowing> borrowingResult = borrowingRepository.findById(id);
-        if (borrowingResult.isPresent()) {
-            Integer bookId = borrowingResult.get().getBook().getId();
-            borrowingRepository.deleteById(id);
-            return "redirect:/books/show/" + bookId;
+    @PostMapping("/delete/{specialofferId}")
+    public String delete(@PathVariable("specialofferId") Integer id) {
+        // prima di cancellare l'offerta devo recuperare l'id della pizza
+        Optional<SpecialOffer> specialOfferResult = specialOfferRepository.findById(id);
+        if (specialOfferResult.isPresent()) {
+            Integer pizzaId = specialOfferResult.get().getPizza().getId();
+           specialOfferRepository.deleteById(id);
+            return "redirect:/pizze/show/" + pizzaId;
         } else {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
 
-    }*/
+    }
 
 
 }
