@@ -13,7 +13,7 @@ import java.util.List;
 public class Pizza {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-private Integer id;
+   private Integer id;
     @NotBlank(message = "la pizza deve avere un nome")
     private String name;
     @NotBlank(message = "la pizza deve avere una descrizione")
@@ -70,11 +70,11 @@ private Integer id;
         this.img = img;
     }
 
-    public List<SpecialOffer> getSpecialOfferList() {
+    public List<SpecialOffer> getSpecialOffers() {
         return specialOffers;
     }
 
-    public void setSpecialOfferList(List<SpecialOffer> specialOfferList) {
-        this.specialOffers = specialOfferList;
+    public void setSpecialOffers(List<SpecialOffer> specialOffers) {
+        this.specialOffers = specialOffers;
     }
 }

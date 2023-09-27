@@ -14,7 +14,7 @@
 <body>
 <div class="container">
     <h1>Create offer</h1>
-    <h2 th:text="${specialoffer.pizza.title}"></h2>
+    <h2 th:text="${specialoffer.pizza.name}"></h2>
     <hr>
     <!-- ho a disposizione un attributo che si chiama book -->
     <!-- inoltre la classe #fields di Thymeleaf contiene la mappa con eventuali errori -->
@@ -23,10 +23,10 @@
                 th:action="@{/specialoffers/create}"
                 id="specialoffer-form"
                 method="POST"
-                th:object="${specialOffer}"
+                th:object="${specialoffer}"
         >
             <!-- input hidden per il book-->
-            <input type="hidden" th:field="*{pizza}">
+            <input type="hidden" th:field="*{Pizza}">
             <!-- startDate -->
             <div class="mb-3">
                 <label for="startdate" class="form-label">Start Date</label>
