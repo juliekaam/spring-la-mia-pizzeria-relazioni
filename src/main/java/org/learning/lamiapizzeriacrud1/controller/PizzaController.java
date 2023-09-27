@@ -38,7 +38,7 @@ public class PizzaController {
     Optional<Pizza> pizzaOptional=pizzaRepository.findById(id);
     if(pizzaOptional.isPresent()){
         Pizza pizzaFound=pizzaOptional.get();
-        model.addAttribute("pizze",pizzaFound);
+        model.addAttribute("pizza",pizzaFound);
         return "pizze/detailpizza";
     }else {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND);

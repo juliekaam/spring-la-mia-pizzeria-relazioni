@@ -3,11 +3,11 @@ package org.learning.lamiapizzeriacrud1.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import org.springframework.boot.context.properties.bind.Name;
 
 
 import java.math.BigDecimal;
+import java.util.List;
+
 @Entity
 @Table(name="pizza")
 public class Pizza {
@@ -23,6 +23,11 @@ private Integer id;
     private BigDecimal price;
 
     private String img;
+
+    // mapped by vuole il nome dell'attributo sull'entità Specialoffer dove si trova la relazione con la pizza
+    // cascade indica quali operazioni propagare alle istanze della entità figlia
+    @OneToMany(mappedBy = "pizza", cascade = {CascadeType.REMOVE})
+    private List<SpecialOffer> specialOffers;
 
 
     public Integer getId() {
@@ -63,5 +68,13 @@ private Integer id;
 
     public void setImg(String img) {
         this.img = img;
+    }
+
+    public List<SpecialOffer> getSpecialOfferList() {
+        return specialOffers;
+    }
+
+    public void setSpecialOfferList(List<SpecialOffer> specialOfferList) {
+        this.specialOffers = specialOfferList;
     }
 }
